@@ -1,0 +1,30 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Utilisateurs</title>
+</head>
+<body>
+    <h1>Liste des utilisateurs</h1>
+    <a href="/utilisateurs/add">ajouter un utilisateur</a>
+    <table>
+        <tr>
+            <th>nom complet</th>
+            <th>email</th>
+        </tr>
+        <tr th:each="utilisateur: ${utilisateurs}">
+            <td th:text="${utilisateur.nom} + ' ' + ${utilisateur.prenom}" />
+            <td th:text="${utilisateur.email}" />
+            <td><a th:href="@{/utilisateurs/info/__${utilisateur.id}__}">Afficher</a></td>
+            <td><form action="#" th:action="@{/utilisateurs/delete/__${utilisateur.id}__}" th:method="post">
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit" id="submitButton"> delete </button>
+            </form></td>
+        </tr>
+    </table>
+</body>
+</html>

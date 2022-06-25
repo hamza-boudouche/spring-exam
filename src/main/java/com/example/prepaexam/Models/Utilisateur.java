@@ -37,21 +37,65 @@ public class Utilisateur {
         this.role = role;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public List<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    @Override
+    public String toString() {
+        return "Utilisateur{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", role=" + role +
+                ", blogs=" + blogs +
+                '}';
+    }
+
     public void commenter(Billet b, Commentaire c){
         b.addCommentaire(c);
     }
 
-    public void redigerArticle(){
-
-    }
+    public void redigerArticle(){}
 
     public void validerArticle(Billet b){
         b.setStatus(BilletStatus.VALIDEE);
     }
 
-    public void supprimerCommentaire(){
-
-    }
+    public void supprimerCommentaire(){}
 
     public void publicArticle(Billet b){
         b.setStatus(BilletStatus.PUBLIEE);
